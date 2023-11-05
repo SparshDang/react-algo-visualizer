@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 import { useParams } from "react-router";
 
-import { bubbleSort } from "../Algorithms";
+import { bubbleSort, insertionSort, selectionSort, mergeSort } from "../Algorithms";
 
 const arrayReducer = (state, action) => {
   if (action.type === "SHUFFLE") {
@@ -25,14 +25,25 @@ const arrayReducer = (state, action) => {
     };
   } else if (action.type === "SETSTATES") {
     const algo = action.algo;
+    let arrayStates;
     if (algo === "bubble") {
-      const arrayStates = bubbleSort([...state.currentArray]);
-      return {
-        currentArray: state.currentArray,
-        current: 0,
-        arrayStates: arrayStates,
-      };
+      arrayStates = bubbleSort([...state.currentArray]);
     }
+    else if (algo === "insertion") {
+       arrayStates = insertionSort([...state.currentArray]);
+    }
+    else if (algo === "selection") {
+       arrayStates = selectionSort([...state.currentArray]);
+    }    
+    else if (algo === "merge") {
+       arrayStates = mergeSort([...state.currentArray]);
+    }
+    
+    return {
+      currentArray: state.currentArray,
+      current: 0,
+      arrayStates: arrayStates,
+    };
   }
 
   return {
@@ -49,12 +60,12 @@ export default function SorterPage() {
     current: 0,
     arrayStates: [],
   });
-  // const algo = params.id;
+  const algo = params.id;
 
   useEffect(() => {
     reducer({type:"SHUFFLE"})
-    reducer({type:"SETSTATES", algo:"bubble"})
-  }, []);
+    reducer({type:"SETSTATES", algo:algo})
+  }, [algo]);
 
   return (
     <>
