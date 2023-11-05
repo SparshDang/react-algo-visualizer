@@ -4,7 +4,7 @@
     justify-content: space-between;
     padding: 0.5rem;
     padding-left: 1rem;
-    border-bottom: 3px solid rgb(181, 181, 181);
+    border-bottom: 3px solid black;
 }
 
 .main > div{
@@ -14,7 +14,8 @@
 
 .title{
     font-size: 2rem;
-    color: rgb(181, 181, 181);
+    color: black;
+    font-weight: bold;
     text-decoration: none;
 }
 
