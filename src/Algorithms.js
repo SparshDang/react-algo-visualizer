@@ -117,3 +117,36 @@ export const mergeSort = (arr) => {
   states = mergeSort__(arr, 0, arr.length - 1, states);
   return states;
 };
+
+export const linearSearch = (arr, element) => {
+  let searching_elements = [];
+  for (let i = 0; i < arr.length; i++) {
+    searching_elements.push(i);
+    if (arr[i] === element) {
+      return searching_elements;
+    }
+  }
+  searching_elements.push(-1);
+  return searching_elements;
+};
+export const binarySearch = (arr, element) => {
+  let low = 0,
+    high = arr.length - 1;
+  let mid;
+  let searching_elements = []
+  while (low <= high) {
+    mid = Number.parseInt((low + high) / 2);
+    searching_elements.push(mid)
+
+    if (arr[mid] === element) {
+      return searching_elements;
+    } else if (arr[mid] > element) {
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+
+  searching_elements.push(-1);
+  return searching_elements;
+};

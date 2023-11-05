@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import SorterPage from "./Pages/SorterPage";
 import Root from "./Components/Root";
+import SearchPage from "./Pages/SearchPage";
 
 
 const router = createBrowserRouter(
@@ -11,7 +12,8 @@ const router = createBrowserRouter(
     element: <Root/>,
     children:[
       {index:true, element:<HomePage/> },
-      {path: "algo/:id", element:<SorterPage/> },
+      {path: "sort/:id", element:<SorterPage/> },
+      {path: "search/:id", element:<SearchPage/> },
     ]}
 
   ]

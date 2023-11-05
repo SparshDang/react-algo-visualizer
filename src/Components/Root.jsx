@@ -12,14 +12,14 @@ export default function Root() {
         <Link to="/" className={style.title}> Algo Visualizer</Link>
         <div className={style["dropdown-container"]}>
           <Dropdown title="Sorting">
-            <div>Bubble Sort</div>
-            <div>Selection Sort</div>
-            <div>Insertion Sort</div>
-            <div>Merge Sort</div>
+            <Link to="sort/bubble">Bubble Sort</Link>
+            <Link to="sort/selection">Selection Sort</Link>
+            <Link to="sort/insertion">Insertion Sort</Link>
+            <Link to="sort/merge">Merge Sort</Link>
           </Dropdown>
           <Dropdown title="Seaching">
-            <div>Linear Search</div>
-            <div>Binary Search</div>
+            <Link to="search/linear">Linear Search</Link>
+            <Link to="search/linear">Binary Search</Link>
           </Dropdown>
         </div>
       </div>

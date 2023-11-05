@@ -1,6 +1,8 @@
 import React, { useReducer, useEffect } from "react";
 import { useParams } from "react-router";
 
+import style from "./SorterPage.module.css";
+
 import BarsContainer from "../Components/SorterPageComponents/BarsContainer";
 
 import {
@@ -73,27 +75,33 @@ export default function SorterPage() {
 
   return (
     <>
-      <BarsContainer list={state.currentArray} />
-      <button
-        onClick={() => reducer({ type: "NEXTSTATE" })}
-        disabled={state.current === state.arrayStates.length - 1}
-      >
-        Next
-      </button>
-      <button
-        onClick={() => reducer({ type: "PREVSTATE" })}
-        disabled={state.current === 0}
-      >
-        Previous
-      </button>
-      <button
-        onClick={() => {
-          reducer({ type: "SHUFFLE" });
-          reducer({ type: "SETSTATES", algo: algo });
-        }}
-      >
-        Shuffle
-      </button>
+      <h1 style={{
+        textAlign:"center"
+      }}>{algo.toUpperCase()} SORT</h1>
+      <div className={style.barsContainerWrapper}>
+        <BarsContainer list={state.currentArray} />
+        <div className={style.divider} />
+        <button
+          onClick={() => reducer({ type: "NEXTSTATE" })}
+          disabled={state.current === state.arrayStates.length - 1}
+        >
+          Next
+        </button>
+        <button
+          onClick={() => {
+            reducer({ type: "SHUFFLE" });
+            reducer({ type: "SETSTATES", algo: algo });
+          }}
+        >
+          Shuffle
+        </button>
+        <button
+          onClick={() => reducer({ type: "PREVSTATE" })}
+          disabled={state.current === 0}
+        >
+          Previous
+        </button>
+      </div>
     </>
   );
 }

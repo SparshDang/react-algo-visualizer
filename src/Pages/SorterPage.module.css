@@ -1,0 +1,13 @@
+.barsContainerWrapper{
+    width: 50%;
+    margin: 10px auto;
+    border: 2px solid rgb(177, 177, 177);
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.divider{
+    height: 2px;
+    background-color: rgb(177, 177, 177);
+    margin: 10px auto;
+}

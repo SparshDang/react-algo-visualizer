@@ -1,12 +1,19 @@
-import React from 'react'
+import React from "react";
 
-import style from './Bar.module.css';
+import { motion } from "framer-motion";
 
-export default function Bar({value, height}) {
+import style from "./Bar.module.css";
+
+export default function Bar(props) {
+  const height = ((props.value + 1) / 10) * 20;
 
   return (
-    <div className={style.bar} style={{height:`${height}rem`}}>
-      {value}
-    </div>
-  )
+    <motion.div
+      className={`${style.bar} ${props?.current ? style.current : ""} ${props?.found ? style.found : ""}`}
+      layout
+      style={{ height: `${height}rem` }}
+    >
+        {props.show && props.value}
+    </motion.div>
+  );
 }
