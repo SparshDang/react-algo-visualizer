@@ -15,7 +15,7 @@
 .title{
     font-size: 2rem;
     color: rgb(181, 181, 181);
-
+    text-decoration: none;
 }
 
 .dropdown-container{

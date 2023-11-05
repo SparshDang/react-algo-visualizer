@@ -21,6 +21,7 @@
 }
 .open{
     height: min-content;
+    border: 1px solid grey;
 }
 
 .flipped{

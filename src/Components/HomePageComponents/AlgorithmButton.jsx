@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 import style from './AlgorithmButton.module.css';
 
 export default function AlgorithmButton(props) {
   return (
-    <div className={style.main}>
+    <Link className={style.main} to={props.link}>
       {props.text}
-    </div>
+    </Link>
   )
 }
