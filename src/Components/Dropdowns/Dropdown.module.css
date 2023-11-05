@@ -1,0 +1,28 @@
+.main{
+    position: relative;
+    width: 8rem;
+    border: 2px solid black;
+}
+
+.button{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+}
+
+.children{
+    height: 0;
+    width: 100%;
+    top: 100%;
+    overflow: hidden;
+    position: absolute;
+    transition: height 5s;
+}
+.open{
+    height: min-content;
+}
+
+.flipped{
+    transform: rotate(180deg);
+}

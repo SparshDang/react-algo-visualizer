@@ -1,0 +1,22 @@
+.main{
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+.header{
+    font-size: 2rem;
+    font-weight: 100;
+    color: rgb(160, 160, 160);
+}
+
+.divider{
+    height: 2px;
+    background-color: rgb(183, 183, 183);
+    margin: 10px auto;
+}
+
+.children{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+}
