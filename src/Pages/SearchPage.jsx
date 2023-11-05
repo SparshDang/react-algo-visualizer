@@ -29,7 +29,7 @@ export default function SearchPage() {
     setCurrentElement(0);
   };
 
-  useEffect(setElementToSearchHandler, []);
+  useEffect(setElementToSearchHandler, [algo]);
 
   const disableScreen =
     currentElement === elementsList.length - 1 &&
@@ -43,7 +43,7 @@ export default function SearchPage() {
           textAlign: "center",
         }}
       >
-        {algo.toUpperCase()} Search
+        {algo.toUpperCase()} SEARCH
       </h1>
     <div className={style.barsContainerWrapper}>
       <div className={style.inner_container}>
