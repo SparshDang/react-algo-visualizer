@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import style from "./SorterPage.module.css";
 
 import BarsContainer from "../Components/SorterPageComponents/BarsContainer";
+import Action from "../Components/Actions/action";
 
 import {
   bubbleSort,
@@ -75,32 +76,27 @@ export default function SorterPage() {
 
   return (
     <>
-      <h1 style={{
-        textAlign:"center"
-      }}>{algo.toUpperCase()} SORT</h1>
+      <h1
+        style={{
+          textAlign: "center",
+        }}
+      >
+        {algo.toUpperCase()} SORT
+      </h1>
       <div className={style.barsContainerWrapper}>
         <BarsContainer list={state.currentArray} />
         <div className={style.divider} />
-        <button
-          onClick={() => reducer({ type: "NEXTSTATE" })}
-          disabled={state.current === state.arrayStates.length - 1}
-        >
-          Next
-        </button>
-        <button
-          onClick={() => {
+        <Action
+          nextFunction={() => reducer({ type: "NEXTSTATE" })}
+          nextButtonDiabled={state.current === state.arrayStates.length - 1}
+          prevFunction={() => reducer({ type: "PREVSTATE" })}
+          prevButtonDiabled={state.current === 0}
+          thirdBtnHandler={() => {
             reducer({ type: "SHUFFLE" });
             reducer({ type: "SETSTATES", algo: algo });
           }}
-        >
-          Shuffle
-        </button>
-        <button
-          onClick={() => reducer({ type: "PREVSTATE" })}
-          disabled={state.current === 0}
-        >
-          Previous
-        </button>
+          thirdBtnText="Shuffle"
+        /> 
       </div>
     </>
   );
