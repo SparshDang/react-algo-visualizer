@@ -1,7 +1,14 @@
 import React, { useReducer, useEffect } from "react";
 import { useParams } from "react-router";
 
-import { bubbleSort, insertionSort, selectionSort, mergeSort } from "../Algorithms";
+import BarsContainer from "../Components/SorterPageComponents/BarsContainer";
+
+import {
+  bubbleSort,
+  insertionSort,
+  selectionSort,
+  mergeSort,
+} from "../Algorithms";
 
 const arrayReducer = (state, action) => {
   if (action.type === "SHUFFLE") {
@@ -28,17 +35,14 @@ const arrayReducer = (state, action) => {
     let arrayStates;
     if (algo === "bubble") {
       arrayStates = bubbleSort([...state.currentArray]);
+    } else if (algo === "insertion") {
+      arrayStates = insertionSort([...state.currentArray]);
+    } else if (algo === "selection") {
+      arrayStates = selectionSort([...state.currentArray]);
+    } else if (algo === "merge") {
+      arrayStates = mergeSort([...state.currentArray]);
     }
-    else if (algo === "insertion") {
-       arrayStates = insertionSort([...state.currentArray]);
-    }
-    else if (algo === "selection") {
-       arrayStates = selectionSort([...state.currentArray]);
-    }    
-    else if (algo === "merge") {
-       arrayStates = mergeSort([...state.currentArray]);
-    }
-    
+
     return {
       currentArray: state.currentArray,
       current: 0,
@@ -63,26 +67,33 @@ export default function SorterPage() {
   const algo = params.id;
 
   useEffect(() => {
-    reducer({type:"SHUFFLE"})
-    reducer({type:"SETSTATES", algo:algo})
+    reducer({ type: "SHUFFLE" });
+    reducer({ type: "SETSTATES", algo: algo });
   }, [algo]);
 
   return (
     <>
-      <div>
-        <ul>
-          {state.currentArray.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
-      <button onClick={() => reducer({type:"NEXTSTATE"})} disabled={state.current === state.arrayStates.length-1}>
-            Next
+      <BarsContainer list={state.currentArray} />
+      <button
+        onClick={() => reducer({ type: "NEXTSTATE" })}
+        disabled={state.current === state.arrayStates.length - 1}
+      >
+        Next
       </button>
-      <button onClick={() => reducer({type:"PREVSTATE"})} disabled={state.current === 0}>
-            Previous
+      <button
+        onClick={() => reducer({ type: "PREVSTATE" })}
+        disabled={state.current === 0}
+      >
+        Previous
       </button>
-
+      <button
+        onClick={() => {
+          reducer({ type: "SHUFFLE" });
+          reducer({ type: "SETSTATES", algo: algo });
+        }}
+      >
+        Shuffle
+      </button>
     </>
   );
 }

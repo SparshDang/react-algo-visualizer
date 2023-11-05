@@ -1,0 +1,10 @@
+.bar{
+    background-color: rgb(246, 180, 180);
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 1rem;
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
